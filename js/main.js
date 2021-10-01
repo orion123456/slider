@@ -1,8 +1,8 @@
-let widthSlide = document.querySelector(".slide").offsetWidth;
-let leftArrow = document.querySelector(".prev");
-let rightArrow = document.querySelector(".next");
-let sliderTrack = document.querySelector(".slider-track");
-let slideLength = document.querySelectorAll(".slide").length;
+const widthSlide = document.querySelector(".slide").offsetWidth;
+const leftArrow = document.querySelector(".prev");
+const rightArrow = document.querySelector(".next");
+const sliderTrack = document.querySelector(".slider-track");
+const slideLength = document.querySelectorAll(".slide").length;
 let viewSlide = 0;
 
 leftArrow.addEventListener("click", function () {
@@ -13,19 +13,15 @@ rightArrow.addEventListener("click", function () {
 });
 
 function fnLeft() {
-    if (viewSlide < 1) {
-        viewSlide = 0;
-    } else {
+    if (viewSlide > 0) {
         viewSlide--;
+        sliderTrack.style.transform = "translateX(-" + viewSlide * widthSlide + "px)";
     }
-    sliderTrack.style.transform = "translateX(-" + viewSlide * widthSlide + "px)";
 }
 function fnRight() {
-    if (viewSlide === slideLength - 1) {
-        viewSlide = slideLength - 1;
-    } else {
+    if (viewSlide < slideLength - 1 ) {
         viewSlide++;
+        sliderTrack.style.transform = "translateX(-" + viewSlide * widthSlide + "px)";
     }
-    sliderTrack.style.transform = "translateX(-" + viewSlide * widthSlide + "px)";
 }
 
